@@ -10,7 +10,7 @@ They have been testing this approach for the last year.
 They now want a report on how repeat purchases impact sales.
 
 # Data
-The data is available in the file pet_supplies.csv.
+The data is available in the file [pet_supplies.csv](pet_supplies.csv)
 
 Here are the first 30 observations of the data.
 |product_id|category |animal|size  |price   |sales  |rating|repeat_purchase|
