@@ -132,7 +132,7 @@ WHERE repeat_purchase IS NOT NULL;
 You want to show whether sales are higher for repeat purchases for different animals. You also want to give a range for the sales.
 Write a query to return the animal, repeat_purchase indicator and the avg_sales, along with the min_sales and max_sales. All values should be rounded to whole numbers.
 You should use the original pet_supplies data for this task.
-
+## Code
 ```sql
 SELECT animal,
 	repeat_purchase,
@@ -143,23 +143,55 @@ FROM pet_supplies
 GROUP BY
 	animal, repeat_purchase
 ```
+### Result
+|animal|repeat_purchase|avg_sales|min_sales|max_sales|
+|------|---------------|---------|---------|---------|
+|Fish  |0              |705      |288      |1307     |
+|Dog   |0              |1084     |574      |1795     |
+|Cat   |0              |1035     |512      |1730     |
+|Cat   |1              |998      |512      |1724     |
+|Bird  |0              |1380     |858      |2255     |
+|Bird  |1              |1408     |853      |2256     |
+|Dog   |1              |1038     |574      |1797     |
+|Fish  |1              |693      |287      |1301     |
 
 # Task 3
 The management team want to focus on efforts in the next year on the most popular pets - cats and dogs - for products that are bought repeatedly.
 Write a query to return the product_id, sales and rating for the relevant products.
 You should use the original pet_supplies data for this task.
-
+## Code
 ```sql
 SELECT 
-    product_id,
-    sales,
-    rating
-FROM 
-    pet_supplies
-WHERE 
-    animal IN ('Cat', 'Dog') 
-    AND repeat_purchase = 1  
-ORDER BY 
-    sales DESC;
-```
+product_id, 
+ROUND(CAST(sales AS numeric),2) AS sales, 
+rating
 
+FROM pet_supplies
+WHERE animal IN ('Cat', 'Dog') AND repeat_purchase::numeric = 1
+ORDER BY
+	sales DESC;
+```
+### Results (First 20 rows)
+|product_id|sales    |rating|
+|----------|---------|------|
+|518       |1797.02  |7     |
+|280       |1795.77  |5     |
+|728       |1793.71  |6     |
+|20        |1792.63  |7     |
+|946       |1788.28  |8     |
+|863       |1724.15  |7     |
+|1383      |1723.87  |8     |
+|272       |1470.65  |6     |
+|561       |1469.55  |5     |
+|285       |1467.21  |4     |
+|752       |1466.78  |6     |
+|332       |1466.30  |6     |
+|152       |1464.80  |4     |
+|1061      |1463.58  |7     |
+|88        |1463.29  |4     |
+|370       |1462.67  |null  |
+|1234      |1461.92  |null  |
+|495       |1460.29  |6     |
+|987       |1460.01  |2     |
+|1135      |1458.21  |6     |
+|1143      |1457.65  |5     |
