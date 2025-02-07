@@ -1,4 +1,4 @@
-![Pet Supplies Image](pet_supplies_image.jpg)
+![Pet Supplies Image](pet_supplies_picture.png)
 # sql-data-cleaning-pet_supplies
 Data cleaning of a pet supplies dataset. Used SQL to complete the project.
 
